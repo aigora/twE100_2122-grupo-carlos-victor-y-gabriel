@@ -1,4 +1,4 @@
-# Laberinto
+# Laberinto.
 
 Desarrollo de un laberinto para un jugador que se movera con las flechas del teclado.
 ## Integrantes del equipo
