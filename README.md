@@ -1,6 +1,5 @@
 # [Título del trabajo]
 Laberinto.
-[Descripción breve del proyecto a realizar (2-3 frases).]
 Desarrollo de un laberinto para un jugador que se movera con las flechas del teclado.
 ## Integrantes del equipo
 Víctor Sen Fernandez, victorsenfernandez.
