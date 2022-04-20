@@ -2,23 +2,43 @@
 
 int main ()
 {
-    char op1,op2;
+    char op1,op2,dificultad;
+    char principo[10],destino[10];
     printf(" BIENVENIDO AL METRO!! ");
+    printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Jugar \n\n 3. Salir\n\n Opcion: ");
     do
     {
-        printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Escoger destino \n\n 3. Salir\n\n Opcion: ");
+
         scanf(" %c",&op1);
 
         switch(op1)
         {
             case '1':
-                  printf("\n Instrucciones:");
-
+                  printf("\n Instrucciones\nA continuacion el usuario tendra que elegir la parada en la que se encuentra y el nivel dificultad con el que desee jugar.\npor cada etacion tendra que superar una prueba hasta llegar a la parada de destino \n");
+                  printf("\neliga otra opcion ");
              break;
 
              case '2':
-                     printf("\n Destino");
+                     printf("\n seleccione la parada en la que se encunetra: ");
+                     scanf("  %10s",principo);
+                     printf("\n seleccione la parada a la que quiere llegar: ");
+                     scanf("    %10s",destino);
+                     printf("\nSu trayecto sera %s-%s\n",principo,destino);
 
+                     printf("\n seleccione el nivel de dificultad.\n 1.facil\n 2.medio\n 3.dificil\nopcion:");
+                     scanf(" %c",&dificultad);
+                     switch(dificultad){
+                 case '1':
+                    printf("Ha escogido la opcion facil, dispone de tres comodines");
+                    break;
+                    case '2':
+                    printf("Ha escogido la opcion media, dispone de dos comodines");
+                    break;
+                    case '3':
+                    printf("Ha escogido la opcion dificil, no dispone comodines");
+                    break;
+                     }
+                     printf("\n\nEl juego esta en desarrollo, eliga otra opcion ");
               break;
 
               case '3':
@@ -28,15 +48,16 @@ int main ()
                 {
                     return 0;
                 }
+                else
+                    printf("\neliga otra opcion ");
               break;
-
-              default:
+         default:
                 printf("\n    Opcion no valida");
               break;
         }
 
     }
-    while(1);
+    while(op2!='S' || op2!='s');
     return 0;
 
 }
