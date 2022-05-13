@@ -19,6 +19,16 @@ int main ()
              break;
 
              case '2':
+                       pf=fopen("Mapa_metro.txt","r");
+                     if(pf == NULL){
+                        printf("Error al abrir el mapa");
+                     }else{
+                    while (fscanf(pf, "%c", &c) != EOF)
+	                   {
+
+	                  printf("%c", c); // Escribimos el caracter en el destino
+	                      }
+                     pclose(pf);
                      printf("\n seleccione la parada en la que se encunetra: ");
                      scanf("  %10s",principo);
                      printf("\n seleccione la parada a la que quiere llegar: ");
