@@ -26,7 +26,7 @@ int main ()
                     while (fscanf(pf, "%c", &c) != EOF)
 	                   {
 
-	                  printf("%c", c); // Escribimos el caracter en el destino
+	                  printf("%c", c); 
 	                      }
                      pclose(pf);
                      printf("\n seleccione la parada en la que se encunetra: ");
