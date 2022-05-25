@@ -1,47 +1,40 @@
 #include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
 
 int main ()
 {
-  int MaxJugada,palos=15,jugada;
+  int MaxJugada,palos=15,jugada1,jugada2, MinJugada;
+  char aux;
 
   printf("\nJuego de los palos\nHay un monton con %i palos, puedes coger palos de dos en dos\n\n",palos);
-  MaxJugada=2;
-
+  MaxJugada=4 ;
+  MinJugada=0;
   printf ("\nQuedan %d palos en el monton.\n",palos);
-
   while (palos>1) {
-
     do {
-       printf("¨ Cuantos palos quieres coger ? ", MaxJugada);
-       scanf("%d", &jugada);
-       if(jugada<MaxJugada||jugada>MaxJugada)
+       printf("¨ Cuantos palos quieres coger ? ");
+       scanf("%d", &jugada1);
+       if((jugada1<=MinJugada||jugada1>MaxJugada))
         printf("numero incorrecto,escoja otro\n");
-    } while (jugada<=0 || jugada>MaxJugada);
+        //else if(jugada==char){
+           //printf("letra,escoja numero\n");
+        //}
+    } while (jugada1<=0 || jugada1>MaxJugada );
+    palos = palos - jugada1;
+if (palos<1) {
+       printf ("\nJugada incorrecta, podria haber ganado.\n");
 
-    palos = palos - jugada;
-
-
-  if (palos==1) {
+    } else if (palos==1) {
 
        printf ("\n Enhorabuena ! Ha ganado la partida.\n");
 
     }else {
-       jugada = palos%(MaxJugada);
-
-       if (!jugada)
-          jugada = MaxJugada;
-       else if (jugada>1)
-          jugada --;
-
+        srand(time(NULL));
+        jugada2 = (rand() % 4)+1;
        printf("Quedan %d palillos.\n",palos);
-
-       if (jugada>1)
-          printf ("Yo retiro %d palillos.\n",jugada);
-       else
-          printf ("Yo retiro un palillo.\n");
-
-       palos = palos - jugada;
-
+          printf ("Yo retiro %d palillos.\n",jugada2);
+       palos = palos - jugada2;
        if (palos==1) {
           printf ("\nLo siento, ha perdido esta partida.\n");
        } else {
@@ -49,6 +42,5 @@ int main ()
        }
     }
   }
-
   return 0;
 }
