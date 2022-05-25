@@ -3,10 +3,9 @@ MAPA DEL METRO SCAPE ROOM.
 
 
 L1
-------Valencia------barecelona-----Zaragoza----La Rioja----Cantabria--
-                                                                     |
-                                                                     |      L3
-                                                                     Madrid-----Merida---Leon-----Palencia----Asturias
-                                                                     |
-L2                                                                   |
------Cadiz--------Jaen---------Granada-----Sevilla----Valladolid------  
+Zaragoza----La Rioja----Cantabria--
+                                   |      L3
+                                     Madrid-----Merida---Leon
+                                   |
+L2                                 |
+Granada-----Sevilla----Valladolid--
