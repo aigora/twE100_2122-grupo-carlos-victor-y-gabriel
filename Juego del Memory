@@ -1,0 +1,140 @@
+#include<stdio.h>
+
+void ejecucion(char m[3][3]);
+void primera(char m[3][3]);
+void tablero(char m[3][3]);
+void vacio(char c[3][3]);
+void insertar(char c[3][3]);
+void comprobar(char c[3][3],char sol[3][3]);
+
+int main(){
+char op;
+char m[3][3],c[3][3],sol[3][3]={{'%','2','t'},{'#','%','&'},{'?','/','0'}};
+
+ejecucion(m);
+
+do{
+printf("Estas jugando al memory,tienes que memorizar los caracteres, cuando lo hayas hecho pulsa s:");
+scanf(" %c",&op);
+}while(op!='s'&&op!='S');
+    system("cls");
+    vacio(c);
+    insertar(c);
+    printf("\n\n");
+     printf("matriz introducida por jugador\n__________________________\n");
+ for(int i=0;i<3;i++){
+   for(int j=0;j<3;j++){
+  if(j<2){
+    printf(" %c |",c[i][j]);
+  }
+  else{
+    printf(" %c ",c[i][j]);
+   }
+   }
+  if(i<2){
+    printf("\n-------------\n");
+  }
+}
+printf("\n\n\n");
+printf("\nmatriz solucion\n__________________________\n");
+for(int i=0;i<3;i++){
+   for(int j=0;j<3;j++){
+  if(j<2){
+    printf(" %c |",sol[i][j]);
+  }
+  else{
+    printf(" %c ",sol[i][j]);
+   }
+   }
+  if(i<2){
+    printf("\n-------------\n");
+  }
+}
+comprobar(c,sol);
+return 0;
+}
+
+void ejecucion(char m[3][3]){
+ primera(m);
+ tablero(m);
+}
+
+void primera(char m[3][3]){
+m[0][0]='%';
+m[0][1]='2';
+m[0][2]='t';
+m[1][0]='#';
+m[1][1]='%';
+m[1][2]='&';
+m[2][0]='?';
+m[2][1]='/';
+m[2][2]='0';
+}
+
+void tablero(char m[3][3]){
+for(int i=0;i<3;i++){
+   for(int j=0;j<3;j++){
+  if(j<2){
+    printf(" %c |",m[i][j]);
+  }
+  else{
+    printf(" %c ",m[i][j]);
+   }
+   }
+  if(i<2){
+    printf("\n-------------\n");
+  }
+}
+printf("\n\n");
+}
+
+void vacio(char c[3][3]){
+for(int i=0;i<3;i++){
+   for(int j=0;j<3;j++){
+  if(j<2){
+    printf("  |",c[i][j]);
+  }
+  else{
+    printf("  ",c[i][j]);
+     }
+   }
+  if(i<2){
+    printf("\n---------\n");
+  }
+}
+
+printf("\n\n");
+}
+
+void insertar(char c[3][3]){
+    int i,j;
+printf("introduce los valores de la matriz\nPara un juego responsable no mire la matriz solucion\n");
+for(i=0;i<3;i++){
+   for(j=0;j<3;j++){
+  printf("introduce[%i][%i]:",i+1,j+1);
+  scanf("   %c",&c[i][j]);
+
+  }
+ }
+}
+
+void comprobar(char c[3][3],char sol[3][3]){
+    int cont=1;
+    printf("\n\n");
+   for(int i=0;i<3;i++){
+     for(int j=0;j<3;j++){
+         if(c[i][j]==sol[i][j]){
+            printf("posicion[%i][%i] correcta\n",i+1,j+1);
+            cont++;
+         }
+         else{
+            printf("posicion[%i][%i] incorrecta\n",i+1,j+1);
+            cont=0;
+          }
+     }
+   }
+   if(cont==0||cont==1)
+    printf("\n\nHAS PERDIDIO");
+    else if (cont>1)
+        printf("\n\nHAS GANADO");
+}
