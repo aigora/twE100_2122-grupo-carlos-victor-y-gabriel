@@ -1,0 +1,32 @@
+#include<stdio.h>
+#include<windows.h>
+void juegomillonario();
+int main()
+{
+    juegomillonario();
+    return 0;
+}
+void juegomillonario()
+{
+    printf("ESTO ES QUIEN QUIERE SER MILLONARIO!!!A quien no le gustaria ser millonario y no viajar en metro\n");
+    printf("Ya nos imaginamos que le suena esta prueba. Tendra que superar una pregunta de cultura general, para continuar con su viaje\n");
+    char x='º',j;
+    do
+    {
+        printf("Porfavor pulse espacio para continuar...\n");
+        x=getch();
+    }
+    while(x!=' ');
+
+    printf("PRIMERA PREGUNTA\n");
+    printf("Cual es el rio mas largo del mundo?\n");
+    printf("A.Amazonas\nB.Nilo\nC.Rio Misisipi\nD.Mekong\n");
+
+    j=getch();
+    if(j=='b'||j=='B')
+    {
+        printf("Enhorabuena ha pasado la prueba, su viaje continua viaje");
+    }
+    else
+        printf("Se ha equivocado, ha perdido una vida");
+}
