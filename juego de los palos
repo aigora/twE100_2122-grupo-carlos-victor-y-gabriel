@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+int main ()
+{
+  int MaxJugada,palos=15,jugada;
+
+  printf("\nJuego de los palos\nHay un monton con %i palos, puedes coger palos de dos en dos\n\n",palos);
+  MaxJugada=2;
+
+  printf ("\nQuedan %d palos en el monton.\n",palos);
+
+  while (palos>1) {
+
+    do {
+       printf("¨ Cuantos palos quieres coger ? ", MaxJugada);
+       scanf("%d", &jugada);
+       if(jugada<MaxJugada||jugada>MaxJugada)
+        printf("numero incorrecto,escoja otro\n");
+    } while (jugada<=0 || jugada>MaxJugada);
+
+    palos = palos - jugada;
+
+
+  if (palos==1) {
+
+       printf ("\n Enhorabuena ! Ha ganado la partida.\n");
+
+    }else {
+       jugada = palos%(MaxJugada);
+
+       if (!jugada)
+          jugada = MaxJugada;
+       else if (jugada>1)
+          jugada --;
+
+       printf("Quedan %d palillos.\n",palos);
+
+       if (jugada>1)
+          printf ("Yo retiro %d palillos.\n",jugada);
+       else
+          printf ("Yo retiro un palillo.\n");
+
+       palos = palos - jugada;
+
+       if (palos==1) {
+          printf ("\nLo siento, ha perdido esta partida.\n");
+       } else {
+          printf ("Por lo tanto, quedan %d palos.\n",palos);
+       }
+    }
+  }
+
+  return 0;
+}
