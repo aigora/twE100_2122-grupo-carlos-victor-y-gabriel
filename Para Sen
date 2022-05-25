@@ -1,0 +1,46 @@
+#include<stdio.h>
+
+int main()
+{
+    int intentos=0;
+    char num;
+    printf("          BIENVENIDO A LA ADIVINANZA MATEMATICA\n\n");
+    printf("Instrucciones: Tines '3' intentos y tienes la posibilidad de usar pistas dentro de la adivinanza, tienes tres pistas. Las pistas cuentan como intentos.");
+
+    do
+    {
+        printf("\n\n ADIVINANZA:Este era un numero impar, pero un dia la vuelta boca abajo se dio y en numero par se convirtio.\n");
+        printf("\nSi quieres usar la pista uno pulsa '100', si quieres la pista dos pulsa'200' por ultimo la pista '300'\n");
+        printf("\nEscribe un numero entero para la respuesta o para una pista:");
+        scanf("%c",&num);
+        if(num=='100')
+        {
+            printf("\nPista 1: Soy un numero y no miento al decir que tengo forma de asiento\n");
+        }
+        else if(num=='200')
+        {
+            printf("\nPista 2: Las estaciones del año, los puntos cardinales y los elementos. Eso represento\n");
+        }
+        else if(num=='300')
+        {
+            printf("\nPista 3: Soy un numero comprendido entre el 1 y el 10\n");
+        }
+        else if(num>=32 && num<=47)
+        {
+            printf("Pulsa la tecla correcta\n");
+        }
+        else if(num>=58 && num<=126)
+        {
+            printf("Pulsa la tecla correcta\n");
+        }
+        intentos+=1;
+        printf("\nNumero de intentos:%i\n",intentos);
+        if(intentos==3)
+        {
+            printf("\nHAS PERDIDO, el numero era 4. Pulsa 4 para salir\n");
+        }
+    }
+    while(num!='4');
+    printf("Bien es: %c\n",num);
+    return 0;
+}
