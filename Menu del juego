@@ -1,9 +1,12 @@
 #include<stdio.h>
+#include<string.h>
+#define N 12
 
 int main ()
 {
     char op1,op2,dificultad,c;
-    char principo[10],destino[10];
+    char principo[N],destino[N],p1[]={'1'},p2[]={'2'},p3[]={'3'},p4[]={'4'},p5[]={'5'},p6[]={'6'},p7[N]={'7'},p8[N]={'8'},p9[N]={'9'};
+    int cont1=0,cont2=0;
     FILE *pf;
     printf(" BIENVENIDO AL METRO!! ");
     printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Jugar \n\n 3. Salir\n\n Opcion: ");
@@ -32,10 +35,35 @@ while (fscanf(pf, "%c", &c) != EOF)
 	}
 pclose(pf);
                      }
+
                      printf("\n seleccione la parada en la que se encunetra: ");
-                     scanf("  %10s",principo);
+
+                    do{
+                     scanf("  %11s",principo);
+                    printf("\n%i %i\n",strcmp(p3,principo));
+
+                     if(strcmp(p1,principo)==0||strcmp(p2,principo)==0||strcmp(p3,principo)==0||strcmp(p4,principo)==0||strcmp(p5,principo)==0||strcmp(p6,principo)==0||strcmp(p7,principo)==0||strcmp(p8,principo)==0||strcmp(p9,principo)==0)
+                        cont1++;
+                        else{
+                            cont1=0;
+                        printf("Seleccione una parada:");
+                        }
+                       }while(cont1==0);
+
                      printf("\n seleccione la parada a la que quiere llegar: ");
-                     scanf("    %10s",destino);
+                     do{
+                     scanf("  %11s",destino);
+
+                     printf("\n%i\n",strcmp(p1,destino));
+
+                     if(strcmp(p1,destino)==0||strcmp(p2,destino)==0||strcmp(p3,destino)==0||strcmp(p4,destino)==0||strcmp(p5,destino)==0||strcmp(p6,destino)==0||strcmp(p7,destino)==0||strcmp(p8,destino)==0||strcmp(p9,destino)==0)
+                        cont2++;
+                        else{
+                            cont2=0;
+                        printf("Seleccione una parada:");
+                        }
+                       }while(cont2==0);
+
                      printf("\nSu trayecto sera %s-%s\n",principo,destino);
 
                      printf("\n seleccione el nivel de dificultad.\n 1.facil\n 2.medio\n 3.dificil\nopcion:");
