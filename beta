@@ -1,0 +1,369 @@
+#include <stdio.h>
+#include <conio.h>
+#include <windows.h>
+#include <time.h>
+#define H 45
+#define V 13
+
+int juegomillonario();
+int juegocompletoporteria();
+int juegooperaciones();
+int adivinanza();
+
+int main()
+{
+    int prp=1,fn=9;
+    int contv=1;//contador victorias
+    if(prp<fn)//tren va hacia la derecha
+    {
+        for(int j=prp;j<=fn;j++)
+        {
+            if(j==1&&contv==1)
+            {
+                contv=adivinanza();
+            }
+            else if(j==2&&contv==1)
+            {
+                contv=juegooperaciones();
+            }
+            else if(j==3&&contv==1)
+            {
+                contv=juegomillonario();
+            }
+            else if(j==4&&contv==1)
+            {
+                contv=juegocompletoporteria();
+            }
+            else if(j==5&&contv==1)
+            {
+                
+            }
+            else if(j==6&&contv==1)
+            {
+                
+            }
+            else if(j==7&&contv==1)
+            {
+                
+            }
+            else if(j==8&&contv==1)
+            {
+                
+            }
+            else if(j==9&&contv==1)
+            {
+                
+            }
+            
+        }
+    }
+    else//tren va hacia la izquierda
+    {
+        for(int j=prp;j<=fn;j++)
+        {
+
+        }
+    }
+        return 0;
+}
+int juegomillonario()
+{
+    printf("ESTO ES QUIEN QUIERE SER MILLONARIO!!!A quien no le gustaria ser millonario y no viajar en metro\n");
+    printf("Ya nos imaginamos que le suena esta prueba. Tendra que superar una pregunta de cultura general, para continuar con su viaje\n");
+    char x='º',j;
+    do
+    {
+        printf("Por favor pulse espacio para continuar...\n");
+        x=getch();
+    }
+    while(x!=' ');
+
+    printf("PRIMERA PREGUNTA\n");
+    printf("Cual es el rio mas largo del mundo?\n");
+    printf("A.Amazonas\nB.Nilo\nC.Rio Misisipi\nD.Mekong\n");
+
+    j=getch();
+    if(j=='b'||j=='B')
+    {
+        printf("Enhorabuena ha pasado la prueba, su viaje continua viaje");
+        return 1;
+    }
+    else
+    {
+        printf("Se ha equivocado");
+        return 0;
+    }
+}
+int juegocompletoporteria()
+{
+    void printc (char campo[V][H]);
+    int juego(char campo[V][H],int *bx,int *by,int *inp,int *finp);
+    int bx,by,inp,finp;
+    char campo[V][H];
+    bx=6;//posicion x de la bola
+    by=1;//posicion y de la bola
+    inp=4;//fila de inicio de la porteria
+    finp=7;//fila de fin de la porteria
+    int i,j;
+    printf("\nEn este juego tienes que intentar meter gol.\n");
+    char avance;
+    do
+    {
+        printf("Por favor pulse espacio para empezar...\n");
+        avance=getch();
+    }
+    while(avance!=' ');
+
+    for(i=0;i<V;i++)//bucle de los limites
+    {
+        for(j=0;j<H;j++)
+        {
+            if(i==0||i==V-1)
+            {
+                campo[i][j]='-';
+            }
+            else if(j==0||j==H-1)
+            {
+                campo[i][j]='|';
+            }
+            else
+            {
+                campo[i][j]=' ';
+            }
+        }
+    }
+    for(i=inp;i<=finp;i++)//bucle porteria
+    {
+        for(j=42;j<=43;j++)
+        {
+            if(i==inp||i==finp)
+            {
+                    campo[i][j]='-';
+            }
+            else
+                if(j==43)
+            {
+                campo[i][j]='|';
+            }
+        }
+    }
+    juego(campo,&bx,&by,&inp,&finp);
+}
+void printc (char campo[V][H])//funcion que imprime la matriz
+{
+    system("cls");
+    int i,j;
+    for(i=0;i<V;i++)
+    {
+        for(j=0;j<H;j++)
+        {
+            printf("%c",campo[i][j]);
+        }
+        printf("\n");
+    }
+}
+int juego(char campo[V][H],int *bx,int *by,int *inp,int *finp)
+{
+    char enter;
+    int cont=0,aux=-3;
+    int puntuacion=0;
+    setbuf(stdin,NULL);//reset del buffer del teclado
+    while(kbhit()!=1)//kbhit(mientras no se pulsa ninguna tecla se ejecuta el bucle)
+    {
+        campo[*bx][*by]='o';
+        printc(campo);
+        if(aux<0||cont>6)//movimiento hacia arriba de la porteria
+        {
+            for(int i=1;i<11;i++)
+            {
+                campo[i][43]=campo[i+1][43];
+                campo[i][42]=campo[i+1][42];
+                campo[i+1][42]=' ';
+                campo[i+1][43]=' ';
+            }
+            aux=aux+1;
+            if(aux==7)
+            {
+                cont=0;
+                aux=0;
+            }
+            *inp=*inp-1;
+            *finp=*finp-1;
+        }
+        else//movimiento hacia abajo de la porteria
+        {
+            for(int i=11;i>1;i--)
+            {
+                campo[i][43]=campo[i-1][43];
+                campo[i][42]=campo[i-1][42];
+                campo[i-1][42]=' ';
+                campo[i-1][43]=' ';
+            }
+            cont=cont+1;
+            *inp=*inp+1;
+            *finp=*finp+1;
+        }
+        printf("pulsa x para disparar\n");
+        printf("Si pulsas otra tecla que no sea x se te penalizara y la porteria dejara de moverse");
+        Sleep(10);//retardo 10ms
+    }
+    do//mismo codigo de movimiento de la porteria pero despues de haber pulsado una tecla(se podria haber hecho en otra funcion)
+    {
+        campo[*bx][*by]='o';
+        printc(campo);
+        if(aux<0||cont>6)
+        {
+            for(int i=1;i<11;i++)
+            {
+                campo[i][43]=campo[i+1][43];
+                campo[i][42]=campo[i+1][42];
+                campo[i+1][42]=' ';
+                campo[i+1][43]=' ';
+            }
+            aux=aux+1;
+            if(aux==7)
+            {
+                cont=0;
+                aux=0;
+            }
+            *inp=*inp-1;
+            *finp=*finp-1;
+        }
+        else
+        {
+            for(int i=11;i>1;i--)
+            {
+                campo[i][43]=campo[i-1][43];
+                campo[i][42]=campo[i-1][42];
+                campo[i-1][42]=' ';
+                campo[i-1][43]=' ';
+            }
+            cont=cont+1;
+            *inp=*inp+1;
+            *finp=*finp+1;
+        }
+        if(enter!='x')
+        {
+            printf("pulsa x para disparar\n");
+            enter=getch();//scanf sin pulsar enter
+        }
+        if(enter=='x')//movimiento de la pelota
+        {
+            *by=*by+1;
+            campo[*bx][*by -1]=' ';
+        }
+        if((campo[*inp+1][42]=='o')||(campo[*finp-1][42]=='o'))//gol
+            puntuacion=1;
+
+        if((campo[*inp][42]=='o')||(campo[*finp][42]=='o'))//palo
+            puntuacion=2;
+
+        if(campo[6][43]=='o'||campo[5][43]=='o'||campo[7][43]=='o')//fuera
+            puntuacion=3;
+
+        Sleep(10);
+    }while(puntuacion==0);
+
+    if(puntuacion==1)
+    {
+        printf("\nEnhorabuena has pasado la prueba\n");
+        return 1;
+    }
+    if(puntuacion==2)
+    {
+        printf("\nVaya diste al palo no has pasado la prueba\n");
+        return 0;
+    }
+    if(puntuacion==3)
+    {
+        printf("\nVaya fallaste no has pasado la prueba\n");
+        return 0;
+    }
+}
+
+int juegooperaciones()
+{
+    int sol,solu;
+    char op1,op2,avance;
+    srand(time(NULL));
+    int x=1+rand() % 15,y=1+rand() % 15,z=1+rand() %15;
+    int orden=rand() % 4;
+
+    printf("LA CALCULADORA HUMANA!!!\nVamos a poner a prueba tu destraza matematica.\n");
+    printf("\nTendras que realizar la operacion \n");
+    printf("\nTen en cuenta que si pierdes una vida tu prueba sera diferente\n");
+    printf("\nTambien tienes que tener en cuenta la jerarquia de las operaciones\n");
+    do
+    {
+        printf("Por favor pulse espacio para empezar...\n");
+        avance=getch();
+    }
+    while(avance!=' ');
+
+    if(orden==0)
+    {
+        sol=x+y+z;
+        op1='+';
+        op2='+';
+    }
+    else if(orden==1)
+    {
+        sol=x+y*z;
+        op1='+';
+        op2='*';
+    }
+    else if(orden==2)
+    {
+        sol=x*y+z;
+        op1='*';
+        op2='+';
+    }
+    else
+    {
+        sol=x*y*z;
+        op1='*';
+        op2='*';
+    }
+    printf("\nRealice la siguiente operacion:%d%c%d%c%d\n",x,op1,y,op2,z);
+    printf("Mi solucion es:");
+    scanf("%d",&solu);
+    if(sol==solu)
+    {
+        printf("ENHORABUENA HAS PASADO LA PRUEBA");
+        return 1;
+    }
+    else
+    {
+         printf("NO HAS PASADO LA PRUEBA");
+         return 0;
+    }
+}
+
+int adivinanza()
+{
+    int i=0;
+    char num;
+    printf("\n\n\n         BIENVENIDO A LA ADIVINANZA MATEMATICA\n\n");
+    printf("Tienes '3' intentos");
+    printf("\n\n ADIVINANZA:Este era un numero impar, pero un dia la vuelta boca abajo se dio y en numero par se convirtio.\n");
+    printf("Que numero crees que soy?");
+    scanf("%c",&num);
+    while(num!='9'&&i<2)
+    {
+        scanf("%c",&num);
+        printf("Respuesta incorrecta o caracter no permitido\n");
+        printf("Que numero crees que soy?");
+        scanf("%c",&num);
+        i=i+1;
+    }
+    if(num=='9')
+    {
+        printf("Respuesta correcta\n");
+        return 1;
+    }
+    else
+    {
+        printf("Perdiste has superado el numero de intentos\n");
+        return 0;
+    }
+}
