@@ -40,7 +40,7 @@ pclose(pf);
 
                     do{
                      scanf("  %11s",principo);
-                    printf("\n%i %i\n",strcmp(p3,principo));
+                    
 
                      if(strcmp(p1,principo)==0||strcmp(p2,principo)==0||strcmp(p3,principo)==0||strcmp(p4,principo)==0||strcmp(p5,principo)==0||strcmp(p6,principo)==0||strcmp(p7,principo)==0||strcmp(p8,principo)==0||strcmp(p9,principo)==0)
                         cont1++;
@@ -54,7 +54,7 @@ pclose(pf);
                      do{
                      scanf("  %11s",destino);
 
-                     printf("\n%i\n",strcmp(p1,destino));
+                    
 
                      if(strcmp(p1,destino)==0||strcmp(p2,destino)==0||strcmp(p3,destino)==0||strcmp(p4,destino)==0||strcmp(p5,destino)==0||strcmp(p6,destino)==0||strcmp(p7,destino)==0||strcmp(p8,destino)==0||strcmp(p9,destino)==0)
                         cont2++;
