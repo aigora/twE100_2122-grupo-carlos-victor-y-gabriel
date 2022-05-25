@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
+#include <conio.h>
+#include <time.h>
+
+int main()
+{
+    int sol,solu;
+    char op1,op2,avance;
+    srand(time(NULL));
+    int x=1+rand() % 15,y=1+rand() % 15,z=1+rand() %15;
+    int orden=rand() % 4;
+
+    printf("LA CALCULADORA HUMANA!!!\nVamos a poner a prueba tu destraza matematica.\n");
+    printf("\nTendras que realizar la operacion \n");
+    printf("\nTen en cuenta que si pierdes una vida tu prueba sera diferente\n");
+    printf("\nTambien tienes que tener en cuenta la jerarquia de las operaciones\n");
+    do
+    {
+        printf("Por favor pulse espacio para empezar...\n");
+        avance=getch();
+    }
+    while(avance!=' ');
+
+    if(orden==0)
+    {
+        sol=x+y+z;
+        op1='+';
+        op2='+';
+    }
+    else if(orden==1)
+    {
+        sol=x+y*z;
+        op1='+';
+        op2='*';
+    }
+    else if(orden==2)
+    {
+        sol=x*y+z;
+        op1='*';
+        op2='+';
+    }
+    else
+    {
+        sol=x*y*z;
+        op1='*';
+        op2='*';
+    }
+    printf("\nRealice la siguiente operacion:%d%c%d%c%d\n",x,op1,y,op2,z);
+    printf("Mi soluciones:");
+    scanf("%d",&solu);
+    if(sol==solu)
+    {
+        printf("ENHORABUENA HAS PASADO LA PRUEBA");
+    }
+    else
+         printf("NO HAS PASADO LA PRUEBA");
+
+
+    return 0;
+}
