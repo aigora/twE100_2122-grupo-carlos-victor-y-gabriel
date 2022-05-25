@@ -1,0 +1,134 @@
+#include<stdio.h>
+#include<string.h>
+
+int main() {
+    char palabra[20]="calcetin",rep[100],espacios[100];
+    char pal;
+    int longitud,a,b,inicial,bien=0,temp=0,intentos=5;
+    int repetido=0,gano=0;
+
+    printf("\tJuego del Ahorcado\n");
+
+    system("cls");
+
+    longitud = 0;
+    inicial = 0;
+    b = 0;
+
+    rep[0] = ' ';
+    rep[1] = '\0';
+
+
+    do {
+        system("cls");
+        temp=0;
+
+        if(inicial == 0)
+        {
+            for(a=0;a<strlen(palabra);a++)
+            {
+                if(palabra[a] == ' ')
+                {
+                    espacios[a] = ' ';
+                    longitud++;
+                }
+                else
+                {
+                    espacios[a] = '_';
+                    longitud++;
+                }
+            }
+        }
+        inicial = 1;
+        espacios[longitud] = '\0';
+
+        for(a=0;a<strlen(rep);a++)
+        {
+            if(rep[a] == pal)
+            {
+                repetido = 1;
+                break;
+            }
+            else
+            {
+                repetido = 0;
+            }
+        }
+
+        if(repetido == 0)
+        {
+            for(a=0;a<strlen(palabra);a++)
+            {
+                if(palabra[a] == pal)
+                {
+                    espacios[a] = pal;
+                    bien++;
+                    temp=1;
+                }
+            }
+        }
+
+        if(repetido == 0)
+        {
+            if(temp == 0)
+            {
+                intentos-=1;
+            }
+        }
+        else
+        {
+            printf("Ya se ha introducido esta letra");
+            printf("\n\n");
+        }
+
+        printf("\n");
+
+        for(a=0;a<strlen(espacios);a++)
+        {
+            printf(" %c ",espacios[a]);
+        }
+
+        printf("\n");
+
+        if(strcmp(palabra,espacios) == 0)
+        {
+            gano = 1;
+            break;
+        }
+
+        printf("\n");
+        printf("Letras Acertadas: %d",bien);
+        printf("\n");
+        printf("Intentos: %d",intentos);
+        printf("\n");
+
+        rep[b] = pal;
+        b++;
+
+        if (intentos==0)
+        {
+            break;
+        }
+
+        printf("Introduzca una letra:");
+        scanf("\n%c",&pal);
+
+    }while(intentos!= 0);
+
+
+    if(gano)
+    {
+        printf("\n\n");
+        printf("Enhorabuena, has ganado.");
+    }
+    else
+    {
+        printf("\n\n");
+        printf("Has perdido.");
+    }
+
+    printf("\n\n");
+    system("PAUSE");
+    return 0;
+
+}
