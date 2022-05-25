@@ -4,6 +4,7 @@ int main ()
 {
     char op1,op2,dificultad;
     char principo[10],destino[10];
+    FILE *pf;
     printf(" BIENVENIDO AL METRO!! ");
     printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Jugar \n\n 3. Salir\n\n Opcion: ");
     do
