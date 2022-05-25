@@ -2,7 +2,7 @@
 
 int main ()
 {
-    char op1,op2,dificultad;
+    char op1,op2,dificultad,c;
     char principo[10],destino[10];
     FILE *pf;
     printf(" BIENVENIDO AL METRO!! ");
@@ -20,16 +20,18 @@ int main ()
              break;
 
              case '2':
-                       pf=fopen("Mapa_metro.txt","r");
+                     pf=fopen("Mapa_metro.txt","r");
                      if(pf == NULL){
                         printf("Error al abrir el mapa");
-                     }else{
-                    while (fscanf(pf, "%c", &c) != EOF)
-	                   {
 
-	                  printf("%c", c); 
-	                      }
-                     pclose(pf);
+                     }else{
+while (fscanf(pf, "%c", &c) != EOF)
+	{
+
+	  printf("%c", c); // Escribimos el caracter en el destino
+	}
+pclose(pf);
+                     }
                      printf("\n seleccione la parada en la que se encunetra: ");
                      scanf("  %10s",principo);
                      printf("\n seleccione la parada a la que quiere llegar: ");
@@ -55,15 +57,16 @@ int main ()
               case '3':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");
                 scanf(" %c",&op2);
+                if ((op2!='S')||(op2!='s')||(op2!='N')||(op2!='n'))
                 if(op2=='S' || op2=='s')
                 {
                     return 0;
                 }
                 else
-                    printf("\neliga otra opcion ");
+                    printf("\nelija otra opcion ");
               break;
          default:
-                printf("\n    Opcion no valida");
+                printf("\n    Opcion no valida, elija un numero");
               break;
         }
 
