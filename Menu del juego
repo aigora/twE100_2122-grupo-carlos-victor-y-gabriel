@@ -31,7 +31,7 @@ int main ()
 while (fscanf(pf, "%c", &c) != EOF)
 	{
 
-	  printf("%c", c); // Escribimos el caracter en el destino
+	  printf("%c", c); 
 	}
 pclose(pf);
                      }
@@ -98,12 +98,17 @@ pclose(pf);
                         printf("Seleccione una parada:");
                         }
                        }while(cont2==0);
-                       
+
 
                      printf("\nSu trayecto sera de la parada numero %s hasta la parada numero %s\n",principo,destino);
 
                      printf("\n seleccione el nivel de dificultad.\n 1.facil\n 2.medio\n 3.dificil\nopcion:");
+                     do{
                      scanf(" %c",&dificultad);
+                     //if(dificultad!='1'||dificultad!='2'||dificultad!='3'){
+                        printf("Nivel de dificultad no valido\nselecciona otro valor:");
+                     //}
+                     }while(dificultad!='1'&&dificultad!='2'&&dificultad!='3');
                      switch(dificultad){
                  case '1':
                     printf("Ha escogido la opcion facil, dispone de tres comodines");
@@ -114,9 +119,10 @@ pclose(pf);
                     case '3':
                     printf("Ha escogido la opcion dificil, no dispone comodines");
                     break;
+
                      }
-                     printf("\n\nEl juego esta en desarrollo, eliga otra opcion ");
-              break;
+                     printf("\nelija otra opcion\n");
+                     
 
               case '3':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");
