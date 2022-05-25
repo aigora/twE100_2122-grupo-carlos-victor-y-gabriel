@@ -31,7 +31,7 @@ int main ()
 while (fscanf(pf, "%c", &c) != EOF)
 	{
 
-	  printf("%c", c); 
+	  printf("%c", c);
 	}
 pclose(pf);
                      }
@@ -93,36 +93,33 @@ pclose(pf);
 
                      if(strcmp(p1,destino)==0||strcmp(p2,destino)==0||strcmp(p3,destino)==0||strcmp(p4,destino)==0||strcmp(p5,destino)==0||strcmp(p6,destino)==0||strcmp(p7,destino)==0||strcmp(p8,destino)==0||strcmp(p9,destino)==0)
                         cont2++;
-                        else{
+                        if(strcmp(p1,destino)!=0&&strcmp(p2,destino)!=0&&strcmp(p3,destino)!=0&&strcmp(p4,destino)!=0&&strcmp(p5,destino)!=0&&strcmp(p6,destino)!=0&&strcmp(p7,destino)!=0&&strcmp(p8,destino)!=0&&strcmp(p9,destino)!=0){
+
                             cont2=0;
-                        printf("Seleccione una parada:");
+                            printf("opcion no valida\n");
+                             printf("Seleccione una parada:");
+
+
                         }
+                     else if(prp==fn){
+
+                        cont2=0;
+                        printf("te quedas en el mismo sitio\n");
+
+                             printf("Seleccione una parada:");
+
+
+                    }
+
                        }while(cont2==0);
 
 
                      printf("\nSu trayecto sera de la parada numero %s hasta la parada numero %s\n",principo,destino);
+                     printf("\neliga otra opcion :");
+                     break;
 
-                     printf("\n seleccione el nivel de dificultad.\n 1.facil\n 2.medio\n 3.dificil\nopcion:");
-                     do{
-                     scanf(" %c",&dificultad);
-                     //if(dificultad!='1'||dificultad!='2'||dificultad!='3'){
-                        printf("Nivel de dificultad no valido\nselecciona otro valor:");
-                     //}
-                     }while(dificultad!='1'&&dificultad!='2'&&dificultad!='3');
-                     switch(dificultad){
-                 case '1':
-                    printf("Ha escogido la opcion facil, dispone de tres comodines");
-                    break;
-                    case '2':
-                    printf("Ha escogido la opcion media, dispone de dos comodines");
-                    break;
-                    case '3':
-                    printf("Ha escogido la opcion dificil, no dispone comodines");
-                    break;
 
-                     }
-                     printf("\nelija otra opcion\n");
-                     
+
 
               case '3':
                 printf("\n    Estas seguro de que quieres salir (S o N)?: ");
