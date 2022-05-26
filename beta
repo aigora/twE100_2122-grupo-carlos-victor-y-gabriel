@@ -30,7 +30,7 @@ int main ()
              case '1':
                 printf("\n Instrucciones\nA continuacion el usuario tendra que elegir la parada en la que se encuentra");
                 printf("y el nivel dificultad con el que desee jugar.\npor cada etacion tendra que superar una prueba hasta llegar a la parada de destino \n");
-                printf("\nelija otra opcion ");
+                printf("\nelija otra opcion: ");
              break;
              case '2':
                 pf=fopen("Mapa_metro.txt","r");
@@ -132,60 +132,60 @@ int main ()
         {
             if(j==1&&contv==1)
             {
-                printf("Estas en Zaragoza\n");
+                printf("\nEstas en Zaragoza\n");
                 espacios();
                 contv=juegomillonario();
             }
             else if(j==2&&contv==1)
             {
-                printf("Estas en La Rioja\n");
+                printf("\nEstas en La Rioja\n");
                 espacios();
                 contv=juegooperaciones();
             }
             else if(j==3&&contv==1)
             {
-                printf("Estas en Cantabria\n");
+                printf("\nEstas en Cantabria\n");
                 espacios();
                 contv=adivinanza();
 
             }
             else if(j==4&&contv==1)
             {
-                printf("Estas en Granada\n");
+                printf("\nEstas en Granada\n");
                 espacios();
                 contv=juegocompletoporteria();
             }
             else if(j==5&&contv==1)
             {
-                printf("Estas en Sevilla\n");
+                printf("\nEstas en Sevilla\n");
                 espacios();
                 contv=juegomemory();
 
             }
             else if(j==6&&contv==1)
             {
-                printf("Estas en Valladolid\n");
+                printf("\nEstas en Valladolid\n");
                 espacios();
       //          contv=;
 
             }
             else if(j==7&&contv==1)
             {
-                printf("Estas en Madrid\n");
+                printf("\nEstas en Madrid\n");
                 espacios();
               //  contv=;
 
             }
             else if(j==8&&contv==1)
             {
-                printf("Estas en Merida\n");
+                printf("\nEstas en Merida\n");
                 espacios();
                // contv=;
 
             }
             else if(j==9&&contv==1)
             {
-                printf("Estas en Leon\n");
+                printf("\nEstas en Leon\n");
                 espacios();
               //  contv=;
             }
@@ -198,60 +198,60 @@ int main ()
         {
             if(j==1&&contv==1)
             {
-                printf("Estas en Zaragoza\n");
+                printf("\nEstas en Zaragoza\n");
                 espacios();
                 contv=juegomillonario();
             }
             else if(j==2&&contv==1)
             {
-                printf("Estas en La Rioja\n");
+                printf("\nEstas en La Rioja\n");
                 espacios();
                 contv=juegooperaciones();
             }
             else if(j==3&&contv==1)
             {
-                printf("Estas en Cantabria\n");
+                printf("\nEstas en Cantabria\n");
                 espacios();
                 contv=adivinanza();
 
             }
             else if(j==4&&contv==1)
             {
-                printf("Estas en Granada\n");
+                printf("\nEstas en Granada\n");
                 espacios();
                 contv=juegocompletoporteria();
             }
             else if(j==5&&contv==1)
             {
-                printf("Estas en Sevilla\n");
+                printf("\nEstas en Sevilla\n");
                 espacios();
                 contv=juegomemory();
 
             }
             else if(j==6&&contv==1)
             {
-                printf("Estas en Valladolid\n");
+                printf("\nEstas en Valladolid\n");
                 espacios();
             //    contv=;
 
             }
             else if(j==7&&contv==1)
             {
-                printf("Estas en Madrid\n");
+                printf("\nEstas en Madrid\n");
                 espacios();
             //    contv=;
 
             }
             else if(j==8&&contv==1)
             {
-                printf("Estas en Merida\n");
+                printf("\nEstas en Merida\n");
                 espacios();
              //   contv=;
 
             }
             else if(j==9&&contv==1)
             {
-                printf("Estas en Leon\n");
+                printf("\nEstas en Leon\n");
                 espacios();
              //   contv=;
             }
@@ -260,11 +260,13 @@ int main ()
     if(contv==1)
     {
         printf("\n\nHas superado todas las pruebas,has llegado a tu destino");
-        espacios();
+        printf("\nSelecciona otra opcion (3 para salir):");
+
     }
     else
     {
         printf("\n\nNo has superado todas las pruebas");
+        printf("\nSelecciona otra opcion (3 para salir):");
     }
         break;
 
@@ -320,12 +322,12 @@ int juegomillonario()
     j=getch();
     if(j=='b'||j=='B')
     {
-        printf("Enhorabuena ha pasado la prueba, su viaje continua viaje\n\n");
+        printf("\nEnhorabuena ha pasado la prueba, su viaje continua viaje\n\n");
         return 1;
     }
     else
     {
-        printf("Se ha equivocado\n\n");
+        printf("\nSe ha equivocado\n\n");
         return 0;
     }
 }
@@ -562,12 +564,12 @@ int juegooperaciones()
     scanf("%d",&solu);
     if(sol==solu)
     {
-        printf("ENHORABUENA HAS PASADO LA PRUEBA");
+        printf("\nENHORABUENA HAS PASADO LA PRUEBA\n");
         return 1;
     }
     else
     {
-         printf("NO HAS PASADO LA PRUEBA");
+         printf("\nNO HAS PASADO LA PRUEBA\n");
          return 0;
     }
 }
@@ -729,7 +731,7 @@ void insertar(char c[3][3])
 }
 
 int comprobar(char c[3][3],char sol[3][3]){
-    int cont=1;
+    int cont=0;
     printf("\n\n");
    for(int i=0;i<3;i++)
    {
@@ -747,15 +749,16 @@ int comprobar(char c[3][3],char sol[3][3]){
     }
    }
    int valorfinal;
-    if(cont==0||cont==1)
+    if(cont==9)
    {
-        printf("\n\nHAS PERDIDIO");
-        valorfinal=0;
-   }
-    else if (cont>1)
-    {
-        printf("\n\nHAS GANADO");
+       printf("\n\nHAS GANADO");
         valorfinal=1;
+
+   }
+    else
+    {
+         printf("\n\nHAS PERDIDIO");
+        valorfinal=0;
     }
     return valorfinal;
 
