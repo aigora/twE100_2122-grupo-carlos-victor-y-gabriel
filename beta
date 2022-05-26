@@ -256,7 +256,8 @@ void juegoentero()
         break;
 
     default:
-        printf("\n    Opcion no valida, elija un numero");
+        printf("\n    Opcion no valida, elija un numero\n");
+        x=3;
     break;
         }
     }
