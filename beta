@@ -6,22 +6,39 @@
 #define H 45
 #define V 13
 #define N 12
+typedef struct
+{
+    char nombre[20];
+    int edad;
+}jugador;
 
-int juegomillonario();
-int juegocompletoporteria();
-int juegooperaciones();
-int adivinanza();
-void espacios();
-int juegomemory();
-int juegoaleatorios();
+void juegoentero();
 
 int main ()
 {
+    juegoentero();
+    return 0;
+}
+void juegoentero()
+{
+    int juegomillonario();
+    int juegocompletoporteria();
+    int juegooperaciones();
+    int ahorcado();
+    int juegomemory();
+    int juegoaleatorios();
+    void espacios();
+
     char op1,op2,c;
-    char principo[N],destino[N],p1[N]={'1'},p2[N]={'2'},p3[N]={'3'},p4[N]={'4'},p5[N]={'5'},p6[N]={'6'},p7[N]={'7'},p8[N]={'8'},p9[N]={'9'};
-    int cont1=0,cont2=0,prp,fn;
+    char principo[N],destino[N],p1[N]={'1'},p2[N]={'2'},p3[N]={'3'},p4[N]={'4'},p5[N]={'5'},p6[N]={'6'};
+    int cont1=0,cont2=0,prp,fn,x;
+    jugador jugador0;
     FILE *pf;
-    printf(" BIENVENIDO AL METRO!! ");
+    printf(" BIENVENIDO AL METRO!!\n ");
+    printf("Introduzca su nombre:");
+    scanf("%s",jugador0.nombre);
+    printf("Introduzca su edad:");
+    scanf("%d",&jugador0.edad);
     printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Jugar \n\n 3. Salir\n\n Opcion: ");
     do
     {
@@ -31,267 +48,220 @@ int main ()
              case '1':
                 printf("\n Instrucciones\nA continuacion el usuario tendra que elegir la parada en la que se encuentra");
                 printf("y el nivel dificultad con el que desee jugar.\npor cada etacion tendra que superar una prueba hasta llegar a la parada de destino \n");
-                printf("\nelija otra opcion: ");
+                printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir ");
              break;
              case '2':
-                pf=fopen("Mapa_metro.txt","r");
-                if(pf == NULL)
-                {
-                printf("Error al abrir el mapa");
-                }
-                else
-                {
-                while (fscanf(pf, "%c", &c) != EOF)
+                    pf=fopen("Mapa_metro.txt","r");
+                    if(pf == NULL)
                     {
-                        printf("%c", c);
+                    printf("Error al abrir el mapa");
                     }
-                pclose(pf);
+                    else
+                    {
+                    while (fscanf(pf, "%c", &c) != EOF)
+                        {
+                            printf("%c", c);
+                        }
+                    pclose(pf);
+                    }
+                    printf("\n seleccione la parada en la que se encunetra: ");
+        do
+        {
+            scanf("  %11s",principo);
+            if(strcmp(p1,principo)==0)
+                prp=1;
+            else if(strcmp(p2,principo)==0)
+                prp=2;
+            else if(strcmp(p3,principo)==0)
+                prp=3;
+            else if(strcmp(p4,principo)==0)
+                prp=4;
+            else if(strcmp(p5,principo)==0)
+                prp=5;
+            else if(strcmp(p6,principo)==0)
+                prp=6;
+
+            if(strcmp(p1,principo)==0||strcmp(p2,principo)==0||strcmp(p3,principo)==0
+               ||strcmp(p4,principo)==0||strcmp(p5,principo)==0||strcmp(p6,principo)==0)
+                cont1++;
+            else
+            {
+                cont1=0;
+                printf("Seleccione una parada:");
+            }
+        }while(cont1==0);
+
+            printf("\n seleccione la parada a la que quiere llegar: ");
+        do
+        {
+                scanf("  %11s",destino);
+                if(strcmp(p1,destino)==0)
+                    fn=1;
+                else if(strcmp(p2,destino)==0)
+                    fn=2;
+                else if(strcmp(p3,destino)==0)
+                    fn=3;
+                else if(strcmp(p4,destino)==0)
+                    fn=4;
+                else if(strcmp(p5,destino)==0)
+                    fn=5;
+                else if(strcmp(p6,destino)==0)
+                    fn=6;
+
+                if(strcmp(p1,destino)==0||strcmp(p2,destino)==0||strcmp(p3,destino)==0||strcmp(p4,destino)==0
+                    ||strcmp(p5,destino)==0||strcmp(p6,destino)==0)
+                {
+                    cont2++;
                 }
-                printf("\n seleccione la parada en la que se encunetra: ");
-    do
-    {
-        scanf("  %11s",principo);
-        if(strcmp(p1,principo)==0)
-            prp=1;
-        else if(strcmp(p2,principo)==0)
-            prp=2;
-        else if(strcmp(p3,principo)==0)
-            prp=3;
-        else if(strcmp(p4,principo)==0)
-            prp=4;
-        else if(strcmp(p5,principo)==0)
-            prp=5;
-        else if(strcmp(p6,principo)==0)
-            prp=6;
-        else if(strcmp(p7,principo)==0)
-            prp=7;
-        else if(strcmp(p8,principo)==0)
-            prp=8;
-        else if(strcmp(p9,principo)==0)
-            prp=9;
-        if(strcmp(p1,principo)==0||strcmp(p2,principo)==0||strcmp(p3,principo)==0
-           ||strcmp(p4,principo)==0||strcmp(p5,principo)==0||strcmp(p6,principo)==0
-           ||strcmp(p7,principo)==0||strcmp(p8,principo)==0||strcmp(p9,principo)==0)
-            cont1++;
+                if(strcmp(p1,destino)!=0&&strcmp(p2,destino)!=0&&strcmp(p3,destino)!=0&&strcmp(p4,destino)!=0&&strcmp(p5,destino)!=0
+                    &&strcmp(p6,destino)!=0)
+                {
+                    cont2=0;
+                    printf("opcion no valida\n");
+                    printf("Seleccione una parada:");
+                }
+                else if(prp==fn)
+                {
+                    cont2=0;
+                    printf("te quedas en el mismo sitio\n");
+                    printf("Seleccione una parada:");
+                }
+
+        }while(cont2==0);
+
+        printf("\nSu trayecto sera de la parada numero %s hasta la parada numero %s\n",principo,destino);
+        int contv=1;//contador victorias
+        if(prp<fn)//tren va hacia la derecha
+        {
+            for(int j=prp;j<=fn;j++)
+            {
+                if(j==1&&contv==1)
+                {
+                    printf("\nEstas en Zaragoza\n");
+                    espacios();
+                    contv=juegomillonario();
+                }
+                else if(j==2&&contv==1)
+                {
+                    printf("\nEstas en La Rioja\n");
+                    espacios();
+                    contv=juegooperaciones();
+                }
+                else if(j==3&&contv==1)
+                {
+                    printf("\nEstas en Madrid\n");
+                    espacios();
+                    contv=ahorcado();
+
+                }
+                else if(j==4&&contv==1)
+                {
+                    printf("\nEstas en Granada\n");
+                    espacios();
+                    contv=juegocompletoporteria();
+                }
+                else if(j==5&&contv==1)
+                {
+                    printf("\nEstas en Sevilla\n");
+                    espacios();
+                    contv=juegomemory();
+                }
+                else if (j==6&&contv==1)
+                {
+                    printf("\nEstas en Valladolid\n");
+                    espacios();
+                    contv=juegoaleatorios();
+                }
+            }
+        }
+        else if(prp>fn)//tren va hacia la izquierda
+        {
+            for(int j=prp;j>=fn;j--)
+            {
+                if(j==1&&contv==1)
+                {
+                    printf("\nEstas en Zaragoza\n");
+                    espacios();
+                    contv=juegomillonario();
+                }
+                else if(j==2&&contv==1)
+                {
+                    printf("\nEstas en La Rioja\n");
+                    espacios();
+                    contv=juegooperaciones();
+                }
+                else if(j==3&&contv==1)
+                {
+                    printf("\nEstas en Madrid\n");
+                    espacios();
+                    contv=ahorcado();
+
+                }
+                else if(j==4&&contv==1)
+                {
+                    printf("\nEstas en Granada\n");
+                    espacios();
+                    contv=juegocompletoporteria();
+                }
+                else if(j==5&&contv==1)
+                {
+                    printf("\nEstas en Sevilla\n");
+                    espacios();
+                    contv=juegomemory();
+                }
+                else if (j==6&&contv==1)
+                {
+                    printf("\nEstas en Valladolid\n");
+                    espacios();
+                    contv=juegoaleatorios();
+                }
+            }
+        }
+        if(contv==1)
+        {
+            printf("\n\nEnhorabuena %s has superado todas las pruebas,has llegado a tu destino",jugador0.nombre);
+            printf("\nQuieres volver a jugar?(S o N)");
+
+        }
         else
         {
-            cont1=0;
-            printf("Seleccione una parada:");
+            printf("\n\nVaya %s no has superado todas las pruebas",jugador0.nombre);
+            printf("\nQuieres salir del matro?(S o N)");
         }
-    }while(cont1==0);
-
-        printf("\n seleccione la parada a la que quiere llegar: ");
-    do
-    {
-            scanf("  %11s",destino);
-            if(strcmp(p1,destino)==0)
-                fn=1;
-            else if(strcmp(p2,destino)==0)
-                fn=2;
-            else if(strcmp(p3,destino)==0)
-                fn=3;
-            else if(strcmp(p4,destino)==0)
-                fn=4;
-            else if(strcmp(p5,destino)==0)
-                fn=5;
-            else if(strcmp(p6,destino)==0)
-                fn=6;
-            else if(strcmp(p7,destino)==0)
-                fn=7;
-            else if(strcmp(p8,destino)==0)
-                fn=8;
-            else //(strcmp(p9,destino)==0)
-                fn=9;
-
-            if(strcmp(p1,destino)==0||strcmp(p2,destino)==0||strcmp(p3,destino)==0||strcmp(p4,destino)==0
-                ||strcmp(p5,destino)==0||strcmp(p6,destino)==0||strcmp(p7,destino)==0||strcmp(p8,destino)==0||strcmp(p9,destino)==0)
+        scanf(" %c",&op2);
+        if(op2=='S' || op2=='s')
             {
-                cont2++;
+                x=0;
             }
-            if(strcmp(p1,destino)!=0&&strcmp(p2,destino)!=0&&strcmp(p3,destino)!=0&&strcmp(p4,destino)!=0&&strcmp(p5,destino)!=0
-                &&strcmp(p6,destino)!=0&&strcmp(p7,destino)!=0&&strcmp(p8,destino)!=0&&strcmp(p9,destino)!=0)
+            else
             {
-                cont2=0;
-                printf("opcion no valida\n");
-                printf("Seleccione una parada:");
+                printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
+                x=1;
             }
-            else if(prp==fn)
-            {
-                cont2=0;
-                printf("te quedas en el mismo sitio\n");
-                printf("Seleccione una parada:");
-            }
+    break;
 
-    }while(cont2==0);
-
-    printf("\nSu trayecto sera de la parada numero %s hasta la parada numero %s\n",principo,destino);
-
-    int contv=1;//contador victorias
-    if(prp<fn)//tren va hacia la derecha
-    {
-        for(int j=prp;j<=fn;j++)
+    case '3':
+        printf("\n    Estas seguro de que quieres salir (S o N)?: ");
+        scanf(" %c",&op2);
+        //if ((op2!='S')||(op2!='s')||(op2!='N')||(op2!='n'))
+        if(op2=='S' || op2=='s')
         {
-            if(j==1&&contv==1)
-            {
-                printf("\nEstas en Zaragoza\n");
-                espacios();
-                contv=juegomillonario();
-            }
-            else if(j==2&&contv==1)
-            {
-                printf("\nEstas en La Rioja\n");
-                espacios();
-                contv=juegooperaciones();
-            }
-            else if(j==3&&contv==1)
-            {
-                printf("\nEstas en Cantabria\n");
-                espacios();
-                contv=adivinanza();
-
-            }
-            else if(j==4&&contv==1)
-            {
-                printf("\nEstas en Granada\n");
-                espacios();
-                contv=juegocompletoporteria();
-            }
-            else if(j==5&&contv==1)
-            {
-                printf("\nEstas en Sevilla\n");
-                espacios();
-                contv=juegomemory();
-
-            }
-            else if(j==6&&contv==1)
-            {
-                printf("\nEstas en Valladolid\n");
-                espacios();
-                contv=juegoaleatorios();
-
-            }
-            else if(j==7&&contv==1)
-            {
-                printf("\nEstas en Madrid\n");
-                espacios();
-              //  contv=;
-
-            }
-            else if(j==8&&contv==1)
-            {
-                printf("\nEstas en Merida\n");
-                espacios();
-               // contv=;
-
-            }
-            else if(j==9&&contv==1)
-            {
-                printf("\nEstas en Leon\n");
-                espacios();
-              //  contv=;
-            }
-
+            x=0;
         }
-    }
-    else if(prp>fn)//tren va hacia la izquierda
-    {
-        for(int j=prp;j>=fn;j--)
+        else
         {
-            if(j==1&&contv==1)
-            {
-                printf("\nEstas en Zaragoza\n");
-                espacios();
-                contv=juegomillonario();
-            }
-            else if(j==2&&contv==1)
-            {
-                printf("\nEstas en La Rioja\n");
-                espacios();
-                contv=juegooperaciones();
-            }
-            else if(j==3&&contv==1)
-            {
-                printf("\nEstas en Cantabria\n");
-                espacios();
-                contv=adivinanza();
-
-            }
-            else if(j==4&&contv==1)
-            {
-                printf("\nEstas en Granada\n");
-                espacios();
-                contv=juegocompletoporteria();
-            }
-            else if(j==5&&contv==1)
-            {
-                printf("\nEstas en Sevilla\n");
-                espacios();
-                contv=juegomemory();
-
-            }
-            else if(j==6&&contv==1)
-            {
-                printf("\nEstas en Valladolid\n");
-                espacios();
-                contv=juegoaleatorios();
-
-            }
-            else if(j==7&&contv==1)
-            {
-                printf("\nEstas en Madrid\n");
-                espacios();
-            //    contv=;
-
-            }
-            else if(j==8&&contv==1)
-            {
-                printf("\nEstas en Merida\n");
-                espacios();
-             //   contv=;
-
-            }
-            else if(j==9&&contv==1)
-            {
-                printf("\nEstas en Leon\n");
-                espacios();
-             //   contv=;
-            }
+            printf("\nelija otra opcion(1.Instrucciones,2.Jugar ,3.Salir)");
+            x=1;
         }
-    }
-    if(contv==1)
-    {
-        printf("\n\nHas superado todas las pruebas,has llegado a tu destino");
-        printf("\nSelecciona otra opcion (3 para salir):");
 
-    }
-    else
-    {
-        printf("\n\nNo has superado todas las pruebas");
-        printf("\nSelecciona otra opcion (3 para salir):");
-    }
         break;
 
-              case '3':
-                printf("\n    Estas seguro de que quieres salir (S o N)?: ");
-                scanf(" %c",&op2);
-                //if ((op2!='S')||(op2!='s')||(op2!='N')||(op2!='n'))
-                if(op2=='S' || op2=='s')
-                {
-                    return 0;
-                }
-                else
-                    printf("\nelija otra opcion ");
-                break;
-         default:
-                printf("\n    Opcion no valida, elija un numero");
-              break;
+    default:
+        printf("\n    Opcion no valida, elija un numero");
+    break;
         }
-
     }
-    while(op2!='S' || op2!='s');
-
-    return 0;
-
+    while((op2!='S' || op2!='s')&&x!=0);
 }
 void espacios()
 {
@@ -351,7 +321,6 @@ int juegocompletoporteria()
         avance=getch();
     }
     while(avance!=' ');
-
     for(i=0;i<V;i++)//bucle de los limites
     {
         for(j=0;j<H;j++)
@@ -385,7 +354,6 @@ int juegocompletoporteria()
             }
         }
     }
-    //juego(campo,&bx,&by,&inp,&finp);
     return juego(campo,&bx,&by,&inp,&finp);
 }
 void printc (char campo[V][H])//funcion que imprime la matriz
@@ -522,7 +490,6 @@ int juego(char campo[V][H],int *bx,int *by,int *inp,int *finp)
     }
     return valorfinal;
 }
-
 int juegooperaciones()
 {
     int sol,solu;
@@ -531,7 +498,7 @@ int juegooperaciones()
     int x=1+rand() % 15,y=1+rand() % 15,z=1+rand() %15;
     int orden=rand() % 4;
 
-    printf("LA CALCULADORA HUMANA!!!\nVamos a poner a prueba tu destraza matematica.\n");
+    printf("\n\nLA CALCULADORA HUMANA!!!\nVamos a poner a prueba tu destraza matematica.\n");
     printf("\nTendras que realizar la operacion \n");
     printf("\nTen en cuenta que esta prueba es aleatoria cambiara si vuelves a jugar\n");
     printf("\nTambien tienes que tener en cuenta la jerarquia de las operaciones\n");
@@ -574,36 +541,132 @@ int juegooperaciones()
          return 0;
     }
 }
-
-int adivinanza()
+int ahorcado()
 {
-    int i=0;
-    char num;
-    printf("\n\n\n         BIENVENIDO A LA ADIVINANZA MATEMATICA\n\n");
-    printf("Tienes '3' intentos");
-    printf("\n\n ADIVINANZA:Este era un numero impar, pero un dia la vuelta boca abajo se dio y en numero par se convirtio.\n");
-    printf("Que numero crees que soy?");
-    scanf("%c",&num);
-    while(num!='9'&&i<2)
+    char palabra[20]="calcetin",rep[100],espacios[100];
+    char pal;
+    int longitud,a,b,inicial,bien=0,temp=0,intentos=5;
+    int repetido=0,gano=0;
+    printf("\tJuego del Ahorcado\n");
+    printf("\njuega en letras minusculas\n");
+    char x='p';
+    do
     {
-        scanf("%c",&num);
-        printf("Respuesta incorrecta o caracter no permitido\n");
-        printf("Que numero crees que soy?");
-        scanf("%c",&num);
-        i=i+1;
+    printf("Por favor pulse espacio para continuar...\n\n");
+    x=getch();
     }
-    if(num=='9')
+    while(x!=' ');
+    system("cls");
+    longitud=0;
+    inicial=0;
+    b=0;
+    rep[0]=' ';
+    rep[1]='\0';
+    do {
+        system("cls");
+        temp=0;
+        if(inicial == 0)
+        {
+            for(a=0;a<strlen(palabra);a++)
+            {
+                if(palabra[a] == ' ')
+                {
+                    espacios[a] = ' ';
+                    longitud++;
+                }
+                else
+                {
+                    espacios[a] = '_';
+                    longitud++;
+                }
+            }
+        }
+        inicial = 1;
+        espacios[longitud] = '\0';
+        for(a=0;a<strlen(rep);a++)
+        {
+            if(rep[a] == pal)
+            {
+                repetido = 1;
+                break;
+            }
+            else
+            {
+                repetido = 0;
+            }
+        }
+        if(repetido==0)
+        {
+            for(a=0;a<strlen(palabra);a++)
+            {
+                if(palabra[a] == pal)
+                {
+                    espacios[a] = pal;
+                    bien++;
+                    temp=1;
+                }
+            }
+        }
+        if(repetido==0)
+        {
+            if(temp==0)
+            {
+                intentos-=1;
+            }
+        }
+        else
+        {
+            printf("Ya se ha introducido esta letra");
+            printf("\n\n");
+        }
+
+        printf("\n");
+        for(a=0;a<strlen(espacios);a++)
+        {
+            printf(" %c ",espacios[a]);
+        }
+        printf("\n");
+        if(strcmp(palabra,espacios) == 0)
+        {
+            gano = 1;
+            break;
+        }
+        printf("\n");
+        printf("Letras Acertadas: %d",bien);
+        printf("\n");
+        printf("Intentos: %d",intentos);
+        printf("\n");
+        rep[b] = pal;
+        b++;
+
+        if (intentos==0)
+        {
+            break;
+        }
+
+        printf("Introduzca una letra:");
+        scanf("\n%c",&pal);
+
+    }while(intentos!= 0);
+    int valorfinal;
+
+    if(gano)
     {
-        printf("Respuesta correcta\n");
-        return 1;
+        printf("\n\n");
+        printf("Enhorabuena, has ganado.");
+        valorfinal=1;
     }
     else
     {
-        printf("Perdiste has superado el numero de intentos\n");
-        return 0;
+        printf("\n\n");
+        printf("Has perdido.");
+        valorfinal=0;
     }
-}
 
+    printf("\n\n");
+    system("PAUSE");
+    return valorfinal;
+}
 int juegomemory()
 {
     void ejecucion(char m[3][3]);
@@ -613,16 +676,7 @@ int juegomemory()
     void insertar(char c[3][3]);
     int comprobar(char c[3][3],char sol[3][3]);
     char op;
-    char m[3][3],c[3][3],sol[3][3]={{'%','2','t'},{'#','%','&'},{'?','/','0'}};
-    m[0][0]='%';
-    m[0][1]='2';
-    m[0][2]='t';
-    m[1][0]='#';
-    m[1][1]='%';
-    m[1][2]='&';
-    m[2][0]='?';
-    m[2][1]='/';
-    m[2][2]='0';
+    char c[3][3],m[3][3]={{'%','2','t'},{'#','%','&'},{'?','/','0'}};
 
     for(int i=0;i<3;i++)
         {
@@ -679,11 +733,11 @@ int juegomemory()
         {
         if(j<2)
         {
-        printf(" %c |",sol[i][j]);
+        printf(" %c |",m[i][j]);
         }
         else
         {
-        printf(" %c ",sol[i][j]);
+        printf(" %c ",m[i][j]);
         }
         }
         if(i<2)
@@ -691,8 +745,7 @@ int juegomemory()
             printf("\n-------------\n");
         }
     }
-    //comprobar(c,sol);
-    return comprobar(c,sol);
+    return comprobar(c,m);
 }
 void vacio(char c[3][3])
 {
@@ -702,11 +755,11 @@ void vacio(char c[3][3])
         {
             if(j<2)
             {
-            printf("  |",c[i][j]);
+            printf("  |");
             }
             else
             {
-            printf("  ",c[i][j]);
+            printf("  ");
             }
         }
             if(i<2)
@@ -716,7 +769,6 @@ void vacio(char c[3][3])
         }
         printf("\n\n");
 }
-
 void insertar(char c[3][3])
 {
     int i,j;
@@ -730,15 +782,15 @@ void insertar(char c[3][3])
         }
     }
 }
-
 int comprobar(char c[3][3],char sol[3][3]){
     int cont=0;
     printf("\n\n");
-   for(int i=0;i<3;i++)
-   {
+    for(int i=0;i<3;i++)
+    {
      for(int j=0;j<3;j++)
     {
-         if(c[i][j]==sol[i][j]){
+         if(c[i][j]==sol[i][j])
+         {
             printf("posicion[%i][%i] correcta\n",i+1,j+1);
             cont++;
          }
@@ -749,13 +801,13 @@ int comprobar(char c[3][3],char sol[3][3]){
         }
     }
    }
-   int valorfinal;
+    int valorfinal;
     if(cont==9)
-   {
+    {
        printf("\n\nHAS GANADO");
         valorfinal=1;
 
-   }
+    }
     else
     {
          printf("\n\nHAS PERDIDIO");
@@ -764,37 +816,35 @@ int comprobar(char c[3][3],char sol[3][3]){
     return valorfinal;
 
 }
+int juegoaleatorios()
+{
+    int n,a,i;
+    printf("Bienvenido al juego tienes que adiviar un numerodel 0 al 50\n");
+    printf(".................... \n");
+    srand(time(NULL));
+    n = rand() % 50 +1;
 
-int juegoaleatorios(){
-
-int n, a,i=5;
-char r;
-
-//Genera semilla aleatoria
-printf("Bienvenido al juego \n");
-printf(".................... \n");
-srand(time(NULL));
-//Numero aleatorio entre 1 y 100
-n = rand() % 100 +1;
-for(i;i>=1;i--){
-printf("\n te quedan %i intentos \n", i);
-printf("escribe un número(0-100) : ");
-
-scanf("%i", & a);
-
-if(a<n){
-printf("\nte quedas corto \n\n");
-}else if(a>n){
-printf("\nte pasas \n\n");
+    for(i=5;i>=1;i--)
+    {
+        printf("\n te quedan %i intentos \n", i);
+        printf("es un número(0-50) : ");
+        scanf("%i",&a);
+        if(a<n)
+        {
+            printf("\nte quedas corto \n\n");
+        }
+        else if(a>n)
+        {
+            printf("\nte pasas \n\n");
+        }
+        else;
+        if(a==n)
+        {
+            printf("GANASTE!!!! ");
+            return 1;
+        }
+        else;
+    }
+    printf("\n perdiste el numero es %i", n);
+    return 0;
 }
-else ;
-if(a==n){
- printf("GANASTE!!!! ");
- return 1;
-}else;
-}
-printf("\n perdiste el numero es %i", n);
-return 0;
-
-}
-
