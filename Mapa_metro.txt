@@ -2,5 +2,5 @@
 --------------------------
 
 
-1.Zaragoza----2.La Rioja----3.Cantabria----4.Granada-----5.Sevilla----6.Valladolid--7.Madrid----8.Merida---9.Leon
+1.Zaragoza----2.La Rioja----3.Madrid----4.Granada-----5.Sevilla----6.Valladolid
                
