@@ -762,8 +762,10 @@ int comprobar(char c[3][3],char sol[3][3]){
         valorfinal=0;
     }
     return valorfinal;
-    
-    int juegoaleatorios(){
+
+}
+
+int juegoaleatorios(){
 
 int n, a,i=5;
 char r;
@@ -796,4 +798,3 @@ return 0;
 
 }
 
-}
