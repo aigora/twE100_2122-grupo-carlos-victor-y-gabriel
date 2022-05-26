@@ -48,7 +48,8 @@ void juegoentero()
              case '1':
                 printf("\n Instrucciones\nA continuacion el usuario tendra que elegir la parada en la que se encuentra");
                 printf("y el nivel dificultad con el que desee jugar.\npor cada etacion tendra que superar una prueba hasta llegar a la parada de destino \n");
-                printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir ");
+                printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
+                x=3;
              break;
              case '2':
                     pf=fopen("Mapa_metro.txt","r");
@@ -220,24 +221,22 @@ void juegoentero()
         if(contv==1)
         {
             printf("\n\nEnhorabuena %s has superado todas las pruebas,has llegado a tu destino",jugador0.nombre);
-            printf("\nQuieres volver a jugar?(S o N)");
 
         }
         else
         {
             printf("\n\nVaya %s no has superado todas las pruebas",jugador0.nombre);
-            printf("\nQuieres salir del matro?(S o N)");
         }
-        scanf(" %c",&op2);
-        if(op2=='S' || op2=='s')
-            {
-                x=0;
-            }
-            else
-            {
+        scanf("%c",&op2);
+//          if(op2=='S' || op2=='s')
+//            {
+//                x=0;
+//            }
+//            else
+//            {
                 printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
                 x=1;
-            }
+ //           }
     break;
 
     case '3':
@@ -848,3 +847,4 @@ int juegoaleatorios()
     printf("\n perdiste el numero es %i", n);
     return 0;
 }
+
