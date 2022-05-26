@@ -13,6 +13,7 @@ int juegooperaciones();
 int adivinanza();
 void espacios();
 int juegomemory();
+int juegoaleatorios();
 
 int main ()
 {
@@ -166,7 +167,7 @@ int main ()
             {
                 printf("\nEstas en Valladolid\n");
                 espacios();
-      //          contv=;
+                contv=juegoaleatorios();
 
             }
             else if(j==7&&contv==1)
@@ -232,7 +233,7 @@ int main ()
             {
                 printf("\nEstas en Valladolid\n");
                 espacios();
-            //    contv=;
+                contv=juegoaleatorios();
 
             }
             else if(j==7&&contv==1)
@@ -761,5 +762,38 @@ int comprobar(char c[3][3],char sol[3][3]){
         valorfinal=0;
     }
     return valorfinal;
+    
+    int juegoaleatorios(){
+
+int n, a,i=5;
+char r;
+
+//Genera semilla aleatoria
+printf("Bienvenido al juego \n");
+printf(".................... \n");
+srand(time(NULL));
+//Numero aleatorio entre 1 y 100
+n = rand() % 100 +1;
+for(i;i>=1;i--){
+printf("\n te quedan %i intentos \n", i);
+printf("escribe un número(0-100) : ");
+
+scanf("%i", & a);
+
+if(a<n){
+printf("\nte quedas corto \n\n");
+}else if(a>n){
+printf("\nte pasas \n\n");
+}
+else ;
+if(a==n){
+ printf("GANASTE!!!! ");
+ return 1;
+}else;
+}
+printf("\n perdiste el numero es %i", n);
+return 0;
+
+}
 
 }
