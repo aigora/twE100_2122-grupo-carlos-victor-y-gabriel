@@ -9,7 +9,7 @@
 typedef struct
 {
     char nombre[20];
-    int edad;
+    char edad[3];
 }jugador;
 
 void juegoentero();
@@ -38,7 +38,7 @@ void juegoentero()
     printf("Introduzca su nombre:");
     scanf("%s",jugador0.nombre);
     printf("Introduzca su edad:");
-    scanf("%d",&jugador0.edad);
+    scanf("%s",jugador0.edad);
     printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Jugar \n\n 3. Salir\n\n Opcion: ");
     do
     {
@@ -227,15 +227,15 @@ void juegoentero()
         {
             printf("\n\nVaya %s no has superado todas las pruebas",jugador0.nombre);
         }
-        scanf("%c",&op2);
+        //scanf("%c",&op2);
 //          if(op2=='S' || op2=='s')
 //            {
 //                x=0;
 //            }
 //            else
 //            {
-                printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
-                x=1;
+        printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
+        x=3;
  //           }
     break;
 
@@ -250,7 +250,7 @@ void juegoentero()
         else
         {
             printf("\nelija otra opcion(1.Instrucciones,2.Jugar ,3.Salir)");
-            x=1;
+            x=3;
         }
 
         break;
@@ -848,4 +848,6 @@ int juegoaleatorios()
     printf("\n perdiste el numero es %i", n);
     return 0;
 }
+
+
 
