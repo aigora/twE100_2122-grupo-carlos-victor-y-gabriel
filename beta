@@ -229,7 +229,7 @@ void juegoentero()
             printf("\n\nEnhorabuena %s a tus %d anos de edad has superado todas las pruebas,has llegado a tu destino",jugadores[contj].nombre,jugadores[contj].edad);
             if(contj>0)
             {
-                printf("\n\nEl anterior ganador fue %s con una edad de %d",jugadores[contj-1].nombre,jugadores[contj-1].edad);
+                printf("\n\nEl anterior jugador fue %s con una edad de %d",jugadores[contj-1].nombre,jugadores[contj-1].edad);
             }
         }
         else
