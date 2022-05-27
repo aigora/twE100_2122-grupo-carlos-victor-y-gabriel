@@ -6,10 +6,11 @@
 #define H 45
 #define V 13
 #define N 12
+
 typedef struct
 {
     char nombre[20];
-    char edad[3];
+    int edad;
 }jugador;
 
 void juegoentero();
@@ -31,18 +32,20 @@ void juegoentero()
 
     char op1,op2,c;
     char principo[N],destino[N],p1[N]={'1'},p2[N]={'2'},p3[N]={'3'},p4[N]={'4'},p5[N]={'5'},p6[N]={'6'};
-    int cont1=0,cont2=0,prp,fn,x;
-    jugador jugador0;
+    int cont1=0,cont2=0,contj=0,prp,fn,x;
+    jugador jugadores[100];
+
     FILE *pf;
     printf(" BIENVENIDO AL METRO!!\n ");
-    printf("Introduzca su nombre:");
-    scanf("%s",jugador0.nombre);
-    printf("Introduzca su edad:");
-    scanf("%s",jugador0.edad);
     printf("\n\n MENU PRINCIPAL\n\n 1. Instrucciones\n\n 2. Jugar \n\n 3. Salir\n\n Opcion: ");
     do
     {
         scanf(" %c",&op1);
+        printf("Introduzca su nombre:");
+        scanf("%s",jugadores[contj].nombre);
+        printf("Introduzca su edad:");
+        scanf("%d",&jugadores[contj].edad);
+
         switch(op1)
         {
              case '1':
@@ -65,7 +68,7 @@ void juegoentero()
                         }
                     pclose(pf);
                     }
-                    printf("\n seleccione la parada en la que se encunetra: ");
+                    printf("\n seleccione la parada en la que se encunetra(numero): ");
         do
         {
             scanf("  %11s",principo);
@@ -92,7 +95,7 @@ void juegoentero()
             }
         }while(cont1==0);
 
-            printf("\n seleccione la parada a la que quiere llegar: ");
+            printf("\n seleccione la parada a la que quiere llegar(numero): ");
         do
         {
                 scanf("  %11s",destino);
@@ -220,12 +223,15 @@ void juegoentero()
         }
         if(contv==1)
         {
-            printf("\n\nEnhorabuena %s has superado todas las pruebas,has llegado a tu destino",jugador0.nombre);
-
+            printf("\n\nEnhorabuena %s a tus %d anos de edad has superado todas las pruebas,has llegado a tu destino",jugadores[contj].nombre,jugadores[contj].edad);
+            if(contj>0)
+            {
+                printf("\n\nEl anterior ganador fue %s con una edad de %d",jugadores[contj-1].nombre,jugadores[contj-1].edad);
+            }
         }
         else
         {
-            printf("\n\nVaya %s no has superado todas las pruebas",jugador0.nombre);
+            printf("\n\nVaya %s no has superado todas las pruebas",jugadores[contj].nombre);
         }
         //scanf("%c",&op2);
 //          if(op2=='S' || op2=='s')
@@ -234,6 +240,7 @@ void juegoentero()
 //            }
 //            else
 //            {
+        contj++;
         printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
         x=3;
  //           }
@@ -848,6 +855,3 @@ int juegoaleatorios()
     printf("\n perdiste el numero es %i", n);
     return 0;
 }
-
-
-
