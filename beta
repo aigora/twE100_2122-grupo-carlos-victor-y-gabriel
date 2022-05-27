@@ -41,10 +41,13 @@ void juegoentero()
     do
     {
         scanf(" %c",&op1);
-        printf("Introduzca su nombre:");
-        scanf("%s",jugadores[contj].nombre);
-        printf("Introduzca su edad:");
-        scanf("%d",&jugadores[contj].edad);
+        if(op1=='2')
+        {
+            printf("Introduzca su nombre:");
+            scanf("%s",jugadores[contj].nombre);
+            printf("Introduzca su edad:");
+            scanf("%d",&jugadores[contj].edad);
+        }
 
         switch(op1)
         {
