@@ -1,0 +1,107 @@
+#include<stdio.h>
+#include<windows.h>
+#define H 45
+#define V 13
+void f1(char campo[V][H],int bx,int by,int inp,int finp);
+void printc (char campo[V][H]);
+void juego(char campo[V][H],int *bx,int *by,int *inp,int *finp);
+int main()
+{
+    int bx,by,inp,finp;
+    char campo[V][H];
+    bx=6;
+    by=1;
+    inp=4;
+    finp=8;
+    int i,j;
+    for(i=0;i<V;i++)
+    {
+        for(j=0;j<H;j++)
+        {
+            if(i==0||i==V-1)
+            {
+                campo[i][j]='-';
+            }
+            else if(j==0||j==H-1)
+            {
+                campo[i][j]='|';
+            }
+            else
+            {
+                campo[i][j]=' ';
+            }
+        }
+    }
+    for(i=inp;i<=finp;i++)
+    {
+        for(j=42;j<=43;j++)
+        {
+            if(i==inp||i==finp)
+            {
+                    campo[i][j]='-';
+            }
+            else
+                if(j==43)
+            {
+                campo[i][j]='|';
+            }
+        }
+    }
+    juego(campo,&bx,&by,&inp,&finp);
+    return 0;
+}
+void printc (char campo[V][H])
+{
+    system("cls");
+    int i,j;
+    for(i=0;i<V;i++)
+    {
+        for(j=0;j<H;j++)
+        {
+            printf("%c",campo[i][j]);
+        }
+        printf("\n");
+    }
+}
+void juego(char campo[V][H],int *bx,int *by,int *inp,int *finp)
+{
+    char enter;
+    int puntuacion=0;
+    do
+    {
+        campo[*bx][*by]='o';
+        printc(campo);
+        if(*inp>1)
+        {
+            *inp=*inp-1;
+            for(int i=1;i<11;i++)
+            {
+                campo[i][43]=campo[i+1][43];
+                campo[i][42]=campo[i+1][42];
+            }
+        }
+        else
+        {
+            for(int i=11;i>1;i--)
+            {
+                campo[i][43]=campo[i-1][43];
+                campo[i][42]=campo[i-1][42];
+                campo[i-1][42]=' ';
+                campo[i-1][43]=' ';
+            }
+        }
+        if(enter!='x')
+        {
+            printf("pulsa x\n");
+            scanf("%c",&enter);
+        }
+        if(enter=='x')
+        {
+            *by=*by+1;
+            campo[*bx][*by -1]=' ';
+        }
+        if(enter!='x')
+            printf("pulsa x\n");
+        Sleep(100);
+    }while(puntuacion==0);
+}
