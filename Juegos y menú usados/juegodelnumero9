@@ -1,0 +1,32 @@
+
+#include<stdio.h>
+void adivinanza();
+int main()
+{
+    adivinanza();
+    return 0;
+}
+void adivinanza()
+{
+
+    int i=0;
+    char num;
+    printf("          BIENVENIDO A LA ADIVINANZA MATEMATICA\n\n");
+    printf("Tienes '3' intentos ");
+    printf("\n\n ADIVINANZA:Este era un numero impar, pero un dia la vuelta boca abajo se dio y en numero par se convirtio.\n");
+    printf("\nPista: Soy un numero comprendido entre el 1 y el 10\n");
+    printf("Que numero crees que es?");
+    scanf("%c",&num);
+    while(num!='9'&&i<2)
+    {
+        scanf("%c",&num);
+        printf("Respuesta incorrecta o caracter no permitido\n");
+        printf("Que numero crees que es?");
+        scanf("%c",&num);
+        i=i+1;
+    }
+    if(num=='9')
+        printf("Respuesta correcta\n");
+    else
+        printf("Perdiste has superado el numero de intentos");
+}
