@@ -3,7 +3,7 @@
 
 typedef struct
 {
-    char nombre[20];
+    char nombre[N];
     int edad;
 }jugador;
 
@@ -16,18 +16,11 @@ int main ()
 }
 void juegoentero()
 {
-    int juegomillonario();
-    int juegocompletoporteria();
-    int juegooperaciones();
-    int ahorcado();
-    int juegomemory();
-    int juegoaleatorios();
-    void espacios();
 
     char op1,op2,c;
     char principo[N],destino[N],p1[N]={'1'},p2[N]={'2'},p3[N]={'3'},p4[N]={'4'},p5[N]={'5'},p6[N]={'6'};
-    int cont1=0,cont2=0,contj=0,prp,fn,x;
-    jugador jugadores[100];
+    int cont1=0,cont2=0,prp,fn,x;
+    jugador jugador1;
 
     FILE *pf;
     printf(" BIENVENIDO AL METRO!!\n ");
@@ -35,20 +28,20 @@ void juegoentero()
     do
     {
         scanf(" %c",&op1);
-        if(op1=='2')
+        if(op1=='2'&&cont1==0)
         {
             printf("Introduzca su nombre:");
-            scanf("%s",jugadores[contj].nombre);
+            scanf("%s",jugador1.nombre);
             printf("Introduzca su edad:");
-            scanf("%d",&jugadores[contj].edad);
+            scanf("%d",&jugador1.edad);
         }
 
         switch(op1)
         {
              case '1':
-                printf("\n Instrucciones\nA continuacion el usuario tendra que elegir la parada en la que se encuentra");
-                printf("y el nivel dificultad con el que desee jugar.\npor cada etacion tendra que superar una prueba hasta llegar a la parada de destino \n");
-                printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
+                printf("\n Instrucciones\nA continuacion el usuario tendra que elegir la parada en la que se encuentra, ");
+                printf("tendras que ir superando pruebas segun vaya avanzando el tren.\n");
+                printf("\nElija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
                 x=3;
              break;
              case '2':
@@ -65,7 +58,7 @@ void juegoentero()
                         }
                     pclose(pf);
                     }
-                    printf("\n seleccione la parada en la que se encunetra(numero): ");
+                    printf("\nSeleccione la parada en la que se encuentra(numero): ");
         do
         {
             scanf("  %11s",principo);
@@ -220,18 +213,23 @@ void juegoentero()
         }
         if(contv==1)
         {
-            printf("\n\nEnhorabuena %s a tus %d anos de edad has superado todas las pruebas,has llegado a tu destino",jugadores[contj].nombre,jugadores[contj].edad);
-            if(contj>0)
-            {
-                printf("\n\nEl anterior jugador fue %s con una edad de %d",jugadores[contj-1].nombre,jugadores[contj-1].edad);
-            }
+            printf("\n\nEnhorabuena %s a tus %d anos de edad has superado todas las pruebas,has llegado a tu destino",jugador1.nombre,jugador1.edad);
+            pf=fopen("Mapa_metro.txt","a");
+            if (pf == NULL)
+                {
+                printf("Error al abrir el fichero.\n");
+                }
+            else
+                {
+                fprintf(pf,"%s con %d anos de edad \n",jugador1.nombre,jugador1.edad);
+                }
+            fclose(pf);
         }
         else
         {
-            printf("\n\nVaya %s no has superado todas las pruebas",jugadores[contj].nombre);
+            printf("\n\nVaya %s no has superado todas las pruebas",jugador1.nombre);
         }
-        contj++;
-        printf("\nelija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
+        printf("\nElija otra opcion(1.Instrucciones,2.Jugar,3.Salir)");
         x=3;
 
     break;
@@ -245,7 +243,7 @@ void juegoentero()
         }
         else
         {
-            printf("\nelija otra opcion(1.Instrucciones,2.Jugar ,3.Salir)");
+            printf("\nElija otra opcion(1.Instrucciones,2.Jugar ,3.Salir)");
             x=3;
         }
 
