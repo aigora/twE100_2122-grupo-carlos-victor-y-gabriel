@@ -1,4 +1,5 @@
 #include"lib.h"
+
 void espacios()
 {
     char x='p';
