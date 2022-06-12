@@ -222,7 +222,7 @@ void juegoentero()
                 }
             else
                 {
-                fprintf(pf,"%s con %d anos de edad \n",jugador1.nombre,jugador1.edad);
+                fprintf(pf,"\n%s con %d anos de edad \n",jugador1.nombre,jugador1.edad);
                 }
             fclose(pf);
         }
