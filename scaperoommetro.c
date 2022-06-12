@@ -246,7 +246,6 @@ void juegoentero()
             printf("\nElija otra opcion(1.Instrucciones,2.Jugar ,3.Salir)");
             x=3;
         }
-
         break;
 
     default:
