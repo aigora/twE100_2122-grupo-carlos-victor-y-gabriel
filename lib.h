@@ -5,6 +5,7 @@
 #include <time.h>
 #define H 45
 #define V 13
+
     int juegomillonario();
     int juegocompletoporteria();
     int juegooperaciones();
