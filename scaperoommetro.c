@@ -85,7 +85,7 @@ void juegoentero()
             }
         }while(cont1==0);
 
-            printf("\n seleccione la parada a la que quiere llegar(numero): ");
+            printf("\nSeleccione la parada a la que quiere llegar(numero): ");
         do
         {
                 scanf("  %11s",destino);
@@ -132,7 +132,7 @@ void juegoentero()
                 if(j==1&&contv==1)
                 {
                     printf("\nEstas en Zaragoza\n");
-                    espacios();
+                    espacios();//da warning no sabemos por que
                     contv=juegomillonario();
                 }
                 else if(j==2&&contv==1)
@@ -168,6 +168,7 @@ void juegoentero()
                 }
             }
         }
+
         else if(prp>fn)//tren va hacia la izquierda
         {
             for(int j=prp;j>=fn;j--)
@@ -256,3 +257,4 @@ void juegoentero()
     }
     while((op2!='S' || op2!='s')&&x!=0);
 }
+
