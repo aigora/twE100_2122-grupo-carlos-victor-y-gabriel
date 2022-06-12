@@ -14,18 +14,11 @@ int juegomillonario()
 {
     printf("ESTO ES QUIEN QUIERE SER MILLONARIO!!!A quien no le gustaria ser millonario y no viajar en metro\n");
     printf("Ya nos imaginamos que le suena esta prueba. Tendra que superar una pregunta de cultura general, para continuar con su viaje\n");
-    char x='º',j;
-    do
-    {
-        printf("Por favor pulse espacio para continuar...\n");
-        x=getch();
-    }
-    while(x!=' ');
-
+    char j;
+    espacios();
     printf("PRIMERA PREGUNTA\n");
     printf("Cual es el rio mas largo del mundo?\n");
     printf("A.Amazonas\nB.Nilo\nC.Rio Misisipi\nD.Mekong\n");
-
     j=getch();
     if(j=='b'||j=='B')
     {
@@ -38,6 +31,7 @@ int juegomillonario()
         return 0;
     }
 }
+
 int juegocompletoporteria()
 {
     void printc (char campo[V][H]);
@@ -50,13 +44,7 @@ int juegocompletoporteria()
     finp=7;//fila de fin de la porteria
     int i,j;
     printf("\nEn este juego tienes que intentar meter gol.\n");
-    char avance;
-    do
-    {
-        printf("Por favor pulse espacio para empezar...\n");
-        avance=getch();
-    }
-    while(avance!=' ');
+    espacios();
     for(i=0;i<V;i++)//bucle de los limites
     {
         for(j=0;j<H;j++)
@@ -281,17 +269,20 @@ int ahorcado()
 {
     char palabra[20]="calcetin",rep[100],espacios[100];
     char pal;
-    int longitud,a,b,inicial,bien=0,temp=0,intentos=5;
+    int longitud,a,b,inicial,bien=0,temp=0,intentos=7;
     int repetido=0,gano=0;
     printf("\tJuego del Ahorcado\n");
     printf("\njuega en letras minusculas\n");
+
     char x='p';
     do
     {
     printf("Por favor pulse espacio para continuar...\n\n");
     x=getch();
     }
+    //no se ha podido utilizar la funcion espacios porque da error(la ponemos de igual que como está efinida arriba)
     while(x!=' ');
+
     system("cls");
     longitud=0;
     inicial=0;
@@ -442,7 +433,7 @@ int juegomemory()
         vacio(c);
         insertar(c);
         printf("\n\n");
-         printf("matriz introducida por jugador\n__________________________\n");
+        printf("matriz introducida por jugador\n__________________________\n");
      for(int i=0;i<3;i++)
      {
         for(int j=0;j<3;j++)
@@ -508,7 +499,7 @@ void vacio(char c[3][3])
 void insertar(char c[3][3])
 {
     int i,j;
-    printf("introduce los valores de la matriz\nPara un juego responsable no mire la matriz solucion\n");
+    printf("Introduce los valores de la matriz\nPara un juego responsable no mire la matriz solucion\n");
     for(i=0;i<3;i++)
     {
         for(j=0;j<3;j++)
@@ -555,7 +546,7 @@ int comprobar(char c[3][3],char sol[3][3]){
 int juegoaleatorios()
 {
     int n,a,i;
-    printf("Bienvenido al juego tienes que adiviar un numerodel 0 al 50\n");
+    printf("Bienvenido al juego tienes que adiviar un numero del 0 al 50\n");
     printf(".................... \n");
     srand(time(NULL));
     n = rand() % 50 +1;
@@ -567,11 +558,11 @@ int juegoaleatorios()
         scanf("%i",&a);
         if(a<n)
         {
-            printf("\nte quedas corto \n\n");
+            printf("\nTe quedas corto \n\n");
         }
         else if(a>n)
         {
-            printf("\nte pasas \n\n");
+            printf("\nTe pasas \n\n");
         }
         else;
         if(a==n)
