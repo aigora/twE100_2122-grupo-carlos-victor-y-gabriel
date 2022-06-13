@@ -132,7 +132,7 @@ void juegoentero()
                 if(j==1&&contv==1)
                 {
                     printf("\nEstas en Zaragoza\n");
-                    espacios();//da warning no sabemos por que
+                    espacios();
                     contv=juegomillonario();
                 }
                 else if(j==2&&contv==1)
