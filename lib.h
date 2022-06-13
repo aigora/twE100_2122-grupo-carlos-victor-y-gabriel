@@ -12,4 +12,4 @@
     int ahorcado();
     int juegomemory();
     int juegoaleatorios();
-    void espacio();
+    void espacios();
